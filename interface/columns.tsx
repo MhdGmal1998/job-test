@@ -6,19 +6,19 @@ const columns: column[] = [
     },
     {
         id: 'title',
-        label: 'عنوان البوست'
+        label: 'Post Title'
     },
     {
         id: 'view',
-        label: 'عرض'
+        label: 'View Post'
     },
     {
         id: 'edit',
-        label: 'تعديل'
+        label: 'Edit Post'
     },
     {
         id: 'delete',
-        label: 'حذف'
+        label: 'Delete Post'
     },
 ];
 
