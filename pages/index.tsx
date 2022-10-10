@@ -24,9 +24,12 @@ const Home: NextPage = () => {
       <SEO title="Welcome to post Application" description="The home page of the post" />
       <Box sx={{ ...style }}>
         <Box>
-          <LetterAnimation>
+          {/* <LetterAnimation>
             {HomeParagraph1}
-          </LetterAnimation>
+          </LetterAnimation> */}
+          <Typography>
+            {HomeParagraph1}
+          </Typography>
         </Box>
         <Fade bottom duration={6000}>
           <Box>
@@ -45,9 +48,12 @@ const Home: NextPage = () => {
         </Fade>
 
         <Box>
-          <LetterAnimation>
+          {/* <LetterAnimation>
             {HomeParagraph2}
-          </LetterAnimation>
+          </LetterAnimation> */}
+          <Typography>
+            {HomeParagraph2}
+          </Typography>
         </Box>
       </Box>
 
