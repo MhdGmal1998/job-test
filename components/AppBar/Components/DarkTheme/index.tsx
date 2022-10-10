@@ -5,6 +5,7 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import { IconButton, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import ListItemIcon from '../ListItemComponent';
 const DarkTheme = (props) => {
     const { type } = props
     const { toggleTheme, setToggleTheme } = React.useContext(AppContext)
@@ -16,13 +17,13 @@ const DarkTheme = (props) => {
                 {toggleTheme ? <NightlightIcon sx={{ color: 'white' }} /> : <WbSunnyIcon sx={{ color: 'yellow' }} />}
             </IconButton> :
             <ListItem onClick={handleTheme}>
-                <ListItemButton sx={{ backgroundColor: theme.palette.primary.main, mr: 2, borderRadius: 2 }}>
-                    <ListItemText>
+                <ListItemIcon>
+                    <ListItemText sx={{ textAlign: 'center' }}>
                         <IconButton >
                             {toggleTheme ? <NightlightIcon sx={{ color: 'white' }} /> : <WbSunnyIcon sx={{ color: 'yellow' }} />}
                         </IconButton>
                     </ListItemText>
-                </ListItemButton>
+                </ListItemIcon>
             </ListItem>
     )
 }

@@ -3,19 +3,18 @@ import { IconButton, ListItemButton, ListItemText } from '@mui/material'
 import { Fade as Humbergur } from 'hamburger-react'
 import ListItem from '@mui/material/ListItem';
 import { useTheme, styled } from '@mui/material/styles';
+import ListItemIcon from '../ListItemComponent';
 
 const HamburgerIcon = () => {
 
     const theme = useTheme()
     return (
         <ListItem>
-            <ListItemButton sx={{ backgroundColor: theme.palette.primary.main, mr: 2, borderRadius: 2 }}>
-                <ListItemText>
-                   
-                        <Humbergur toggled={true}  color="white"/>
-                    
+            <ListItemIcon>
+                <ListItemText sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Humbergur toggled={true} color="white" />
                 </ListItemText>
-            </ListItemButton>
+            </ListItemIcon>
         </ListItem>
     )
 }

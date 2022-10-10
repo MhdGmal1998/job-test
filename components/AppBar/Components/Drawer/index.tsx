@@ -14,12 +14,13 @@ const Drawer = (props) => {
     return (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <HamburgerIcon />
-            <AddPost />
             <DarkTheme />
+            <Home />
+            <AddPost />
             <FontDirection />
             <TableIcon />
             <CardIcon />
-            <Home />
+
         </Box>
     )
 }

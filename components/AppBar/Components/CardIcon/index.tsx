@@ -4,6 +4,7 @@ import Link from 'next/link'
 import GridViewIcon from '@mui/icons-material/GridView';
 import { CardDirect } from '../../../../interface';
 import { useTheme } from '@mui/material/styles';
+import ListItemIcon from '../ListItemComponent';
 const CardIcon = (props) => {
     const { type } = props
     const theme = useTheme()
@@ -15,13 +16,13 @@ const CardIcon = (props) => {
             :
             <Link href={CardDirect}>
                 <ListItem>
-                    <ListItemButton sx={{ backgroundColor: theme.palette.primary.main, mr: 2, borderRadius: 2 }}>
-                        <ListItemText>
+                    <ListItemIcon>
+                        <ListItemText sx={{ textAlign: 'center' }}>
                             <IconButton >
                                 <GridViewIcon sx={{ color: 'white' }} />
                             </IconButton>
                         </ListItemText>
-                    </ListItemButton>
+                    </ListItemIcon>
                 </ListItem>
             </Link>
     )

@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { CardDirect, DataTableDirect } from '../../../../interface';
 import { useTheme } from '@mui/material/styles';
+import ListItemIcon from '../ListItemComponent';
 
 const CardIcon = (props) => {
     const theme = useTheme()
@@ -16,13 +17,13 @@ const CardIcon = (props) => {
             :
             <Link href={DataTableDirect}>
                 <ListItem>
-                    <ListItemButton sx={{ backgroundColor: theme.palette.primary.main, mr: 2, borderRadius: 2 }}>
-                        <ListItemText>
+                    <ListItemIcon>
+                        <ListItemText sx={{ textAlign: 'center' }}>
                             <IconButton >
                                 <TableViewIcon sx={{ color: 'white' }} />
                             </IconButton>
                         </ListItemText>
-                    </ListItemButton>
+                    </ListItemIcon>
                 </ListItem>
             </Link>
     )

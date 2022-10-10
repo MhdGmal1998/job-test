@@ -4,6 +4,7 @@ import { AddPostModal } from '../../../Modals';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ListItem from '@mui/material/ListItem';
 import { useTheme } from '@mui/material/styles';
+import ListItemIcon from '../ListItemComponent';
 const AddPostIcon = (props) => {
     const { type } = props
 
@@ -15,13 +16,13 @@ const AddPostIcon = (props) => {
             </IconButton>
             :
             <ListItem onClick={() => AddPostModal()}>
-                <ListItemButton sx={{ backgroundColor: theme.palette.primary.main, mr: 2, borderRadius: 2 }}>
-                    <ListItemText>
+                <ListItemIcon>
+                    <ListItemText sx={{ textAlign: 'center' }}>
                         <IconButton >
                             <AddCircleIcon sx={{ color: 'white' }} />
                         </IconButton>
                     </ListItemText>
-                </ListItemButton>
+                </ListItemIcon>
             </ListItem>
     )
 }

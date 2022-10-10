@@ -3,7 +3,6 @@ import {
     AppBar,
     Box,
     Drawer,
-    IconButton,
     Toolbar,
     Typography,
     Button,
@@ -11,6 +10,7 @@ import {
 } from '@mui/material';
 import DrawerComponent from './Components/Drawer'
 import AppBarComponent from './Components/AppBar'
+import { AppContext } from '../../context/provider';
 
 interface Props {
     /**
@@ -27,8 +27,7 @@ const drawerWidth = 240;
 export default function DrawerAppBar(props: Props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
-    const theme = useTheme()
+    const { dir } = React.useContext(AppContext)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -44,6 +43,7 @@ export default function DrawerAppBar(props: Props) {
 
             <Box component="nav">
                 <Drawer
+                    anchor={dir == 'rtl' ? 'right' : 'left'}
                     container={container}
                     variant="temporary"
                     open={mobileOpen}
