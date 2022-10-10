@@ -30,7 +30,7 @@ export default ({ children }) => {
     const { toggleTheme, dir } = React.useContext(AppContext)
 
     useEffect(() => {
-        document.dir = dir
+        document.dir = dir!
 
     }, [dir])
     const theme = useTheme()
