@@ -74,12 +74,16 @@ const CardComponent = (props: propsType) => {
                     </div>
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                        <Typography paragraph>Body:</Typography>
-                        <Typography paragraph>
-                            {post.body}
-                        </Typography>
-                    </CardContent>
+                    <Link href={`/post/${post.id}`}>
+                        <CardContent sx={{
+                            cursor: 'pointer'
+                        }}>
+                            <Typography paragraph>Body:</Typography>
+                            <Typography paragraph>
+                                {post.body}
+                            </Typography>
+                        </CardContent>
+                    </Link>
                 </Collapse>
             </Card>
         </Fade>
