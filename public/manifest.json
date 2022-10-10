@@ -1,0 +1,21 @@
+{
+    "short_name": "Portfolio",
+    "name": "Welcome In Post Web Application",
+    "description": "This Post Web Application is For sharing posts to make communication",
+    "icons": [
+        {
+            "src": "./favicon.png",
+            "type": "image/png",
+            "sizes": "120x120"
+        },
+        {
+            "src": "./favicon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "theme_color": "#11cdef",
+    "background_color": "#11cdef"
+}

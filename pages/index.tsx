@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
   return (
     <Box>
-      <SEO title="Home page " description="The home page of the post" />
+      <SEO title="Welcome to post Application" description="The home page of the post" />
       <Box sx={{ ...style }}>
         <Box>
           <LetterAnimation>
