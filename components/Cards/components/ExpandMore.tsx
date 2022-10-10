@@ -12,7 +12,7 @@ const ExpandMoreComponent = styled((props: ExpandMoreProps) => {
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
         duration: theme.transitions.duration.shortest,
-    }),
+    })
 }));
 
 export default ExpandMoreComponent

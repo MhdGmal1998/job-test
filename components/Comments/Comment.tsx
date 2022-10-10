@@ -7,9 +7,9 @@ interface propsType {
     comment: comment
 }
 
-export default (props: propsType) => {
+const Comments = (props: propsType) => {
     const { comment } = props
-    
+
     const [expand, setExpaned] = useState(true)
     const handleExpand = () => setExpaned(prev => !prev)
 
@@ -26,3 +26,4 @@ export default (props: propsType) => {
         </Accordion>
     )
 }
+export default Comments

@@ -7,7 +7,7 @@ import { column } from "../../../types";
 interface propsType {
     columns: column[]
 }
-export default (props: propsType) => {
+const TableHeader = (props: propsType) => {
     return (
         <TableRow>
             {props?.columns?.map((column) => (
@@ -22,3 +22,4 @@ export default (props: propsType) => {
         </TableRow>
     )
 }
+export default TableHeader

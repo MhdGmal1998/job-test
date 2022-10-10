@@ -5,13 +5,15 @@ interface propsType {
     comments: comment[]
 }
 
-export default (props: propsType): JSX.Element => {
+const Index = (props: propsType): JSX.Element => {
 
     const { comments } = props
 
 
-    const commentsAccordion = comments.map((comment) => <Comment comment={comment} />)
+    const commentsAccordion = comments.map((comment) => <Comment comment={comment} key={comment.id} />)
     return <>
         {commentsAccordion}
     </>
 }
+
+export default Index

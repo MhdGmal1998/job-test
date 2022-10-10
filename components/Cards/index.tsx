@@ -7,11 +7,13 @@ interface propsType {
     posts: post[]
 }
 
-export default (props: propsType) => {
+const Index = (props: propsType) => {
     const { posts } = props
-    const postCards = Cards({posts})
-    
+    const postCards = Cards({ posts })
+
     // <Cards posts={posts} />
 
     return postCards
 }
+
+export default Index

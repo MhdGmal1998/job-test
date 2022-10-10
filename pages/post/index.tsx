@@ -8,6 +8,11 @@ import { useRouter } from "next/router";
 import Error from "next/error";
 import SEO from "../../components/SEO";
 import Container from '@mui/material/Container';
+import { GLOBAL_LINK } from '../../constants/Porfolio';
+import AddPost from "../../components/AppBar/Components/AddPost";
+import { useState } from 'react';
+import Loading from "../../components/Loading";
+import { InfinitySpin } from "react-loader-spinner";
 
 interface propsType {
     posts: post[]
@@ -18,18 +23,16 @@ interface containerPropsType {
 }
 const DivContainer = (props: containerPropsType) => {
     return (
-        <Container fixed>
-            <h1 style={{ textAlign: 'center' }}>Posts</h1>
+        <div>
             {props.children}
-        </Container>
+        </div>
     )
 }
-const Post: NextPage<propsType> = (props) => {
+const Posts: NextPage<propsType> = (props) => {
     const { posts } = props
-
     const router = useRouter();
 
-
+    // get query 
     const { option } = router.query;
 
 
@@ -37,7 +40,6 @@ const Post: NextPage<propsType> = (props) => {
         return <DivContainer>
             <SEO title="Posts Home Cards | " description="This Pages Lists The posts as Cards" />
             <Grid container spacing={2}>
-                {/* <Cards posts={posts} /> */}
                 {Cards({ posts })}
             </Grid>
         </DivContainer>
@@ -50,27 +52,32 @@ const Post: NextPage<propsType> = (props) => {
             <DataTable posts={posts} />
         </DivContainer>
     }
+    else {
+        return (
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <InfinitySpin
+                    width='200'
+                    color="#4fa94d"
+                />
+            </div>
 
-    else
-        return <DivContainer>
-            <SEO title="404 Error | " description="This Page is not Found" />
-            <Error statusCode={404} />
-        </DivContainer>
-
+        )
+    }
 }
-export default Post
+export default Posts
+
+
 
 export async function getStaticProps() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts")
-    const data = await res.json()
-
-    if (!data) {
+    const data = await fetch(GLOBAL_LINK)
+    const posts = await data.json()
+    if (!posts) {
         return {
             notFound: true,
         }
     }
     return {
         props:
-            { posts: data }
+            { posts: posts }
     }
 }

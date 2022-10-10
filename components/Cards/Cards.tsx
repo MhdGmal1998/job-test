@@ -6,7 +6,7 @@ import { Card } from "./components";
 interface propsType {
     posts: post[]
 }
-export default (props: propsType) => {
+const Cards = (props: propsType) => {
     const { posts } = props
 
     const postCards = posts.map((post) => (
@@ -14,6 +14,8 @@ export default (props: propsType) => {
             <Card post={post} />
         </Grid>
     ))
-    
+
     return postCards
 }
+
+export default Cards

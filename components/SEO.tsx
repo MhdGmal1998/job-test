@@ -25,6 +25,8 @@ function SEO(props: propsType) {
             <meta property="twitter:title" content={props?.title} />
             <meta property="twitter:description" content={props?.description} />
 
+
+
         </Head>
     )
 }

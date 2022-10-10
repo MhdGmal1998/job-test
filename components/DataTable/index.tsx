@@ -21,11 +21,11 @@ import { useWindowDimensions } from '../../hooks';
 
 interface propsType {
     posts: post[],
-    
+
 }
 
 
-export default function StickyHeadTable(props: propsType) {
+const TableComponent = (props: propsType) => {
 
 
     const rows = props?.posts
@@ -45,19 +45,20 @@ export default function StickyHeadTable(props: propsType) {
     };
 
     return (
-        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-            <TableContainer sx={{ maxHeight: (height - 150) }}>
+        <Paper sx={{ width: width - 80, overflow: 'hidden' }}>
+            <TableContainer sx={{ width: width - 80, overflow: 'hidden' }}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead sx={{
-                        backgroundColor:'red'
+                        backgroundColor: 'red'
                     }}>
+
                         <TableHeader columns={columns} />
                     </TableHead>
                     <TableBody>
                         {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((row) => {
                                 return (
-                                    <Row row={row} />
+                                    <Row row={row} key={row.id} />
                                 )
                             })}
                     </TableBody>
@@ -65,10 +66,7 @@ export default function StickyHeadTable(props: propsType) {
             </TableContainer>
 
             <TablePagination
-                style={{
-                    height: 50,
-                    backgroundColor:'#ffe8d6'
-                }}
+                style={{ height: 50 }}
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
                 count={rows.length}
@@ -80,3 +78,4 @@ export default function StickyHeadTable(props: propsType) {
         </Paper>
     );
 }
+export default TableComponent

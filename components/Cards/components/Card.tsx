@@ -10,6 +10,7 @@ import {
     IconButton,
     Typography
 } from '@mui/material'
+import Swal from "sweetalert2"
 
 import {
     Edit as EditIcon,
@@ -21,17 +22,20 @@ import { Fade } from 'react-reveal'
 // --------
 import { post } from '../../../types';
 import ExpandMore from './ExpandMore';
+import { DeletePostModal } from '../../Modals';
+import EditPostModal from '../../Modals/EditPostModal';
 
 interface propsType {
     post: post
 }
-export default (props: propsType) => {
+const CardComponent = (props: propsType) => {
     const [expanded, setExpanded] = React.useState(true);
     const { post } = props
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
 
     return (
         <Fade bottom duration={1000}>
@@ -46,21 +50,28 @@ export default (props: propsType) => {
                     </CardContent>
                 </Link>
 
-                <CardActions disableSpacing>
-                    <IconButton aria-label="delete-post">
-                        <DeleteIcon color='error' />
-                    </IconButton>
-                    <IconButton aria-label="edit-post">
-                        <EditIcon color='primary' />
-                    </IconButton>
-                    <ExpandMore
-                        expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon />
-                    </ExpandMore>
+                <CardActions disableSpacing sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                        <IconButton aria-label="delete-post"
+                            onClick={() => DeletePostModal(post.id)}>
+                            <DeleteIcon color='error' />
+                        </IconButton>
+                        <IconButton aria-label="edit-post"
+                            onClick={() => EditPostModal(post.id, post.title, post.body, post.userId)}
+                        >
+                            <EditIcon color='primary' />
+                        </IconButton>
+                    </div>
+                    <div>
+                        <ExpandMore
+                            expand={expanded}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon />
+                        </ExpandMore>
+                    </div>
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
@@ -74,3 +85,4 @@ export default (props: propsType) => {
         </Fade>
     );
 }
+export default CardComponent

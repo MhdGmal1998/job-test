@@ -7,6 +7,7 @@ import { comment, post } from '../../types';
 import Comments from "../../components/Comments";
 import { Box } from "@mui/system";
 import { Divider, Typography } from "@mui/material";
+import { GLOBAL_LINK } from "../../constants/Porfolio";
 interface propsType {
     comments: comment[],
     post: post
@@ -26,7 +27,6 @@ const Post: NextPage<propsType> = (props) => {
             margin: 8
         }}>
             <SEO title={post.title} description={post.body!} />
-            <h1 style={{ textAlign: 'center' }}>Post Comments</h1>
             <Box component="div" sx={{ ...style }}>
                 <Typography fontSize={24}>
                     {post?.title}
@@ -45,17 +45,31 @@ export default Post
 
 
 
+export async function getStaticPaths() {
+    const data = await fetch(GLOBAL_LINK)
+    const posts = await data.json()
 
+    const paths = posts.map(post => {
+        return {
+            params: { id: `${post.id}` }
+        }
+    })
+
+    return {
+        paths: paths,
+        fallback: false
+    }
+}
 
 // --------*********--------//
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
 
     // fetch the data of the post 
-    const postResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const postResponse = await fetch(`${GLOBAL_LINK}/${context.params.id}`)
     const post = await postResponse.json()
 
     // fetch the comments of the post 
-    const commentResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}/comments`)
+    const commentResponse = await fetch(`${GLOBAL_LINK}/${context.params.id}/comments`)
     const comments = await commentResponse.json()
     return {
         props: {

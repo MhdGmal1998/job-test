@@ -1,57 +1,57 @@
 import React, { useState } from 'react'
 import type { NextPage } from 'next'
-import styles from '../styles/Home.module.css'
-
 import Link from 'next/link';
 import SEO from '../components/SEO';
-import { Button, Container } from '@mui/material';
-import AppWithUI from '../components/HomeAnimation';
-import { Flip } from 'react-reveal'
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import { Button, Container, Box, Typography } from '@mui/material';
+import Fade from 'react-reveal/Fade'
+import { LetterAnimation } from '../components/Animation';
+import { HomeParagraph1, HomeParagraph2 } from '../constants/Porfolio';
+import { DataTableDirect, CardDirect } from '../interface';
+
+const style = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  gap: 5
+}
+
 const Home: NextPage = () => {
-  const [count, setCount] = useState(0);
 
-  const { height, width } = useWindowDimensions()
+
   return (
-    <div className={styles.container}>
+    <Box>
       <SEO title="Home page " description="The home page of the post" />
+      <Box sx={{ ...style }}>
+        <Box>
+          <LetterAnimation>
+            {HomeParagraph1}
+          </LetterAnimation>
+        </Box>
+        <Fade bottom duration={6000}>
+          <Box>
+            <Link href={CardDirect}>
+              <Button variant='contained'>Display as Cards</Button>
+            </Link>
+          </Box>
+        </Fade>
 
-      <Container fixed sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems:'center',
-        height: height,
-        gap: 5
-      }}>
-        <Flip bottom opposite duration={1000} style={{
-          innerWidth: width,
-          outerWidth:width
-        }}>
-          <Link href={{
-            pathname: '/post',
-            query: {
-              option: 'cards'
-            }
-          }}>
+        <Fade bottom duration={6000}>
+          <Box>
+            <Link href={DataTableDirect}>
+              <Button variant='contained'>Display as Data Table</Button>
+            </Link>
+          </Box>
+        </Fade>
 
-            <Button variant='contained'>Display as Cards</Button>
-          </Link>
-        </Flip>
-        <Link href={{
-          pathname: '/post',
-          query: {
-            option: 'datatable'
-          }
-        }}>
+        <Box>
+          <LetterAnimation>
+            {HomeParagraph2}
+          </LetterAnimation>
+        </Box>
+      </Box>
 
-          <Button variant='contained'>Display as Data Table</Button>
-        </Link>
-      </Container>
-
-      {/* <AppWithUI /> */}
-
-    </div>
+    </Box>
   )
 }
 export default Home
