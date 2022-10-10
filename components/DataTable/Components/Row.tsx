@@ -6,27 +6,26 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import EditPostModal from '../../Modals/EditPostModal';
 import { DeletePostModal } from "../../Modals";
+import { post } from "../../../types";
 interface ControlBtnPropsType {
     type?: 'view' | 'delete' | 'edit',
     id: number,
 
     children: React.ReactNode,
-    onClick?: Function
+    onClick?: () => void
 }
 
 interface propsType {
-    row: {
-        id: number,
-        title: string,
-        body: string,
-        userId: number,
-    }
+    row: post
 }
+type variantType = "outlined" | "contained" | "text" | undefined
+type colorType = "success" | "error" | "secondary" | "inherit" | "primary" | "info" | "warning" | undefined
 const ControlBtn = (props: ControlBtnPropsType) => {
+
     var { type, id } = props
     var url = ''
-    var color = ''
-    var variant = "outlined"
+    var color: colorType = 'success'
+    var variant: variantType = "outlined"
     if (type == 'view') {
         url = `/post/${id}`
         color = 'success'
@@ -55,8 +54,8 @@ const ControlBtn = (props: ControlBtnPropsType) => {
                         <Button variant={variant} color={color}>
                             {props?.children}
                         </Button>
-                    </Link> : <Button variant={variant} color={color}
-                        onClick={props.onClick}>
+                    </Link> :
+                    <Button variant={variant} color={color} onClick={props.onClick}>
                         {props?.children}
                     </Button>
             }

@@ -11,7 +11,6 @@ import Container from '@mui/material/Container';
 import { GLOBAL_LINK } from '../../constants/Porfolio';
 import AddPost from "../../components/AppBar/Components/AddPost";
 import { useState } from 'react';
-import Loading from "../../components/Loading";
 import { InfinitySpin } from "react-loader-spinner";
 
 interface propsType {
