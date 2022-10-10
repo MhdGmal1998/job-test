@@ -8,6 +8,7 @@ import Comments from "../../components/Comments";
 import { Box } from "@mui/system";
 import { Divider, Typography } from "@mui/material";
 import { GLOBAL_LINK } from "../../constants/Porfolio";
+import { Title } from "@mui/icons-material";
 interface propsType {
     comments: comment[],
     post: post
@@ -24,9 +25,11 @@ const Post: NextPage<propsType> = (props) => {
     const { comments, post } = props
     return (
         <div style={{
-            margin: 8
+            paddingLeft: 'auto',
+            paddingRight: 'auto'
         }}>
             <SEO title={post.title} description={post.body!} />
+            <Typography>The Post</Typography>
             <Box component="div" sx={{ ...style }}>
                 <Typography fontSize={24}>
                     {post?.title}
@@ -35,6 +38,7 @@ const Post: NextPage<propsType> = (props) => {
                 <Divider style={{ width: '100%', marginBottom: '10px' }} />
 
             </Box>
+            <Typography sx={{ marginBottom: 3 }}>The Comments</Typography>
             <Comments comments={comments} />
         </div>
     )

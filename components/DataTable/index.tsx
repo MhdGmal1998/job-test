@@ -46,7 +46,7 @@ const TableComponent = (props: propsType) => {
 
     return (
         <Paper sx={{ width: width - 80, overflow: 'hidden' }}>
-            <TableContainer sx={{ width: width - 80, overflow: 'scroll' }}>
+            <TableContainer sx={{ width: width - 80, overflow: 'auto' }}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead sx={{
                         backgroundColor: 'red'
