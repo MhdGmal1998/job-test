@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import { SEO_IMG, SEO_RUL } from "../constants/Porfolio";
 
 
 interface propsType {
@@ -12,10 +13,13 @@ function SEO(props: propsType) {
             <title>{props?.title}</title>
             <meta name="title" content={props?.title} />
             <meta name="description" content={props?.description} />
+            <link rel="canonical" href={SEO_RUL} />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content="website" />
+            <meta property="og:url" content={SEO_RUL} />
             <meta property="og:url" content={"www.mywebsite.com"} />
+            <meta property="og:image" content={SEO_IMG} />
             <meta property="og:title" content={props?.title} />
             <meta property="og:description" content={props?.description} />
 
@@ -24,6 +28,7 @@ function SEO(props: propsType) {
             <meta property="twitter:url" content={"www.mywebsite.com"} />
             <meta property="twitter:title" content={props?.title} />
             <meta property="twitter:description" content={props?.description} />
+            <meta property="twitter:image" content={SEO_IMG} />
 
 
             <link rel="apple-touch-icon" sizes="120x120" href="./favicon.png" />
