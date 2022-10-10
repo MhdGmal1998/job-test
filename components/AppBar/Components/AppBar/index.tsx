@@ -7,8 +7,17 @@ import FontDirection from '../FontDirection'
 import TableIcon from '../TableIcon'
 import CardIcon from '../CardIcon'
 import Home from '../Home';
+import { Fade as Hamburger } from 'hamburger-react'
+import { useState } from 'react';
+
 const ToolbarComponent = (props) => {
     const { handleDrawerToggle } = props
+    const [isOpen, setOpen] = useState(false)
+    const handleToggle = () => setTimeout(() => { handleDrawerToggle() }, 300)
+    const SetOpen = () => {
+        setOpen(true)
+        setTimeout(() => { setOpen(false) }, 300)
+    }
     return (
         <AppBar component="nav">
             <Toolbar>
@@ -16,10 +25,11 @@ const ToolbarComponent = (props) => {
                     color="inherit"
                     aria-label="open drawer"
                     edge="start"
-                    onClick={handleDrawerToggle}
+                    onClick={handleToggle}
                     sx={{ mr: 2, display: { sm: 'none' } }}
                 >
-                    <MenuIcon />
+                    {/* <MenuIcon /> */}
+                    <Hamburger toggled={isOpen} onToggle={SetOpen} />
                 </IconButton>
 
                 <Typography
